@@ -134,7 +134,7 @@ int GetMacAddress(char *device, u_int8_t *hwaddr) {
 
   p = (u_int8_t *)*ifreq.ifr_hwaddr.sa_data;
 
-  // NOTE: 6とは? :thinking_face:
+  // NOTE: MACアドレスはバイナリ6バイトなので6
   memcpy(hwaddr, p, 6);
   close(soc);
 
