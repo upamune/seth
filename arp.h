@@ -1,4 +1,4 @@
-char *my_arp_ip_ntoa_r(u_int8_t ip[4], char *buf);
+char *sarp_ip_ntoa_r(u_int8_t ip[4], char *buf);
 void print_ether_arp(struct ether_arp *ether_arp);
 int ArpAddTable(u_int8_t mac[6], struct in_addr *ipaddr);
 int ArpDelTable(struct in_addr *ipaddr);
