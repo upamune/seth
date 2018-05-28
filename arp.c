@@ -38,7 +38,7 @@ char *sarp_ip_ntoa_r(u_int8_t ip[4], char *buf) {
   return (buf);
 }
 
-void print_ehter_arp(struct ether_arp *ether_arp) {
+void print_ether_arp(struct ether_arp *ether_arp) {
   static char *hrd[] = {"From KA9Q: NET/ROM pseudo.",
                         "Ethernet 10/100Mbps.",
                         "Experimental Ethernet.",

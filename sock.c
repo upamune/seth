@@ -144,7 +144,7 @@ int GetMacAddress(char *device, u_int8_t *hwaddr) {
  * DummyWait
  * 指定したミリ秒スリープする関数
  */
-int DummyWiat(int ms) {
+int DummyWait(int ms) {
   struct timespec ts;
 
   ts.tv_sec = 0;
