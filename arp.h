@@ -1,3 +1,8 @@
+#ifndef ARP_H
+#define ARP_H
+
+#include <sys/types.h>
+
 char *sarp_ip_ntoa_r(u_int8_t ip[4], char *buf);
 void print_ether_arp(struct ether_arp *ether_arp);
 int ArpAddTable(u_int8_t mac[6], struct in_addr *ipaddr);
@@ -13,3 +18,5 @@ int ArpSendRequestGratuitous(int soc, struct in_addr *targetIp);
 int ArpSendRequest(int soc, struct in_addr *targetIp);
 int ArpCheckGArp(int soc);
 int ArpRecv(int soc, struct ether_header *eh, u_int8_t *data, int len);
+
+#endif

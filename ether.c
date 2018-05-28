@@ -142,7 +142,7 @@ int EtherSend(int soc, u_int8_t smac[6], u_int8_t dmac[6], u_int16_t type,
   eh = (struct ehter_header *)ptr;
 
   // NOTE: memset ある一定のバイトでメモリー領域を埋める
-  memset(eh, 0, sizeof(struct ehter_header));
+  memset(eh, 0, sizeof(struct ether_header));
 
   memcpy(eh->ether_dhost, dmac, 6);
   memcpy(eh->ether_shost, smac, 6);

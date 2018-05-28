@@ -1,3 +1,8 @@
+#ifndef IP_H
+#define IP_H
+
+#include <sys/types.h>
+
 void print_ip(struct ip *ip);
 int IpRecvBufInit();
 int IpRecvBufAdd(u_int16_t id);
@@ -10,3 +15,5 @@ int IpSendLink(int soc, u_int8_t smac[6], u_int8_t dmac[6],
                int dontFlagment, int ttl, u_int8_t *data, int len);
 int IpSend(int soc, struct in_addr *saddr, struct in_addr *daddr,
            u_int8_t proto, int dontFlagment, int ttl, u_int8_t *data, int len);
+
+#endif

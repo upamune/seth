@@ -87,7 +87,7 @@ int ReadParam(char *fname) {
         }
       } else if (strcmp(ptr, "gateway") == 0) {
         if ((ptr = strtok_r(NULL, "\r\n", &saveptr)) != NULL) {
-          Param.gateway.s_addr = inet_addr(ptr);
+          Param.gateway->s_addr = inet_addr(ptr);
         }
       } else if (strcmp(ptr, "device") == 0) {
         if ((ptr = strtok_r(NULL, "\r\n", &saveptr)) != NULL) {
@@ -99,11 +99,11 @@ int ReadParam(char *fname) {
         }
       } else if (strcmp(ptr, "vip") == 0) {
         if ((ptr = strtok_r(NULL, "\r\n", &saveptr)) != NULL) {
-          Param.vip.s_addr = inet_addr(ptr);
+          Param.vip->s_addr = inet_addr(ptr);
         }
       } else if (strcmp(ptr, "vmask") == 0) {
         if ((ptr = strtok_r(NULL, "\r\n", &saveptr)) != NULL) {
-          Param.vmask.s_addr = inet_addr(ptr);
+          Param.vmask->s_addr = inet_addr(ptr);
         }
       }
     }
@@ -115,7 +115,7 @@ int ReadParam(char *fname) {
 }
 
 int isTargetIPAddr(struct in_addr *addr) {
-  if (Param.vip.s_addr == addr->s_addr) {
+  if (Param.vip->s_addr == addr->s_addr) {
     return (1);
   }
 
@@ -123,8 +123,8 @@ int isTargetIPAddr(struct in_addr *addr) {
 }
 
 int isSameSubnet(struct in_addr *addr) {
-  if ((addr->s_addr & Param.vmask.s_addr) ==
-      (Param.vip.s_addr & Param.vmask.s_addr)) {
+  if ((addr->s_addr & Param.vmask->s_addr) ==
+      (Param.vip->s_addr & Param.vmask->s_addr)) {
     return (1);
   }
   return (0);

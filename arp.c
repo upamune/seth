@@ -38,7 +38,7 @@ char *sarp_ip_ntoa_r(u_int8_t ip[4], char *buf) {
   return (buf);
 }
 
-void print_ehter_arp(struct ehter_arp *ether_arp) {
+void print_ehter_arp(struct ether_arp *ether_arp) {
   static char *hrd[] = {"From KA9Q: NET/ROM pseudo.",
                         "Ethernet 10/100Mbps.",
                         "Experimental Ethernet.",
@@ -252,7 +252,7 @@ int GetTargetMac(int soc, struct in_addr *daddr, u_int8_t dmac[6],
   if (isSameSubnet(daddr))
     addr.s_addr = daddr->s_addr;
   else
-    addr.s_addr = Param.gateway.s_addr;
+    addr.s_addr = Param.gateway->s_addr;
 
   count = 0;
 
@@ -335,7 +335,7 @@ int ArpSendRequest(int soc, struct in_addr *targetIp) {
     u_int8_t c[4];
   } saddr, daddr;
 
-  saddr.l = Param.vip.s_addr;
+  saddr.l = Param.vip->s_addr;
   daddr.l = targetIp->s_addr;
 
   ArpSend(soc, ARPOP_REQUEST, Param.vmac, BcastMac, Param.vmac, AllZeroMac,

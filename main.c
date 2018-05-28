@@ -1,6 +1,5 @@
 #include <arpa/inet.h>
 #include <errno.h>
-#include <linux/if.h>
 #include <net/if.h>
 #include <netinet/if_ether.h>
 #include <netinet/ip_icmp.h>
@@ -71,7 +70,7 @@ void *StdInThread(void *arg) {
   // NOTE: 関数 fileno() は、引数 stream
   // を調べ、その整数のディスクリプターを返す。
   targets[0].fd = fileno(stdin);
-  targets[0].events = POLLIN, POLLERR;
+  targets[0].events = POLLIN | POLLERR;
 
   while (EndFlag == 0) {
     switch ((nready = poll(targets, 1, 1000))) {
@@ -200,7 +199,7 @@ int show_ifreq(char *name) {
     // NOTE: `inet_ntop` IPv4/IPv6
     // アドレスをバイナリ形式からテキスト形式に変換する
     printf("myip=%s\n", inet_ntop(AF_INET, &addr.sin_addr, buf1, sizeof(buf1)));
-    Param.myip = addr.sin_addr;
+    Param.myip = &addr.sin_addr;
   }
 
   close(soc);
@@ -245,7 +244,7 @@ int main(int argc, char *argv[]) {
 
   IpRecvBufInit();
 
-  if ((DeviceSoc == init_socket(Param.device)) == -1) {
+  if ((DeviceSoc = init_socket(Param.device)) == -1) {
     exit(-1);
   }
 

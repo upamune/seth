@@ -7,7 +7,6 @@
 #include <arpa/inet.h>
 #include <ctype.h>
 #include <limits.h>
-#include <linux/if.h>
 #include <net/if.h>
 #include <netinet/if_ether.h>
 #include <netinet/ip.h>
@@ -163,7 +162,7 @@ int DummyWiat(int ms) {
  */
 int init_socket(char *device) {
   struct ifreq if_req;
-  struct socketaddr_ll sa;
+  struct sockaddr_ll sa;
   int soc;
 
   // NOTE: htons()関数はunsigned short integer hostshort を
