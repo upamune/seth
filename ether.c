@@ -32,7 +32,7 @@ u_int8_t BcastMac[6] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
  * seth_ntoa_r
  * バイナリ6バイトのMACアドレスから， `:` 区切りの文字列を得る
  */
-char *seth_ntoa_r(u_int8_t *hwaddr, char *buf) {
+char *sether_ntoa_r(u_int8_t *hwaddr, char *buf) {
   sprintf(buf, "%02x:%02x:%02x:%02x:%02x:%02x", hwaddr[0], hwaddr[1], hwaddr[2],
           hwaddr[3], hwaddr[4], hwaddr[5]);
 
