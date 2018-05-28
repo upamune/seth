@@ -122,7 +122,7 @@ int IcmpSendEcho(int soc, struct in_addr *daddr, int seqNo, int size) {
   icmp->icmp_type = ICMP_ECHO;
   icmp->icmp_code = 0;
   icmp->icmp_hun.ih_idseq.icd_id = htons((u_int16_t)getpid());
-  icmp->icmp_hun.ih_idseq.icd_seq = htons((u_int16_t)seqNo());
+  icmp->icmp_hun.ih_idseq.icd_seq = htons((u_int16_t)seqNo);
   icmp->icmp_cksum = 0;
 
   ptr += ECHO_HDR_SIZE;
